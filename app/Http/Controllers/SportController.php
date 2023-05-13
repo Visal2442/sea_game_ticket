@@ -12,7 +12,8 @@ class SportController extends Controller
      */
     public function index()
     {
-        //
+        $sports = Sport::all();
+        return response()->json(["success"=>true, "data"=>$sports],200);
     }
 
     /**

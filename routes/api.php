@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // LOCATION ========================== 
 Route::resource("locations", LocationController::class);
+
+// SCHEDULE ========================== 
+Route::resource("schedules", ScheduleController::class);
+
+// SPORT ========================== 
+Route::resource("sports", SportController::class);
