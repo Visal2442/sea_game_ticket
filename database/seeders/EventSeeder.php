@@ -15,13 +15,22 @@ class EventSeeder extends Seeder
     {
         $events =[
             [
-                "event_name"=>"Football",
-                "description"=>"Men's football U-22",
+                "event_name"=>"Men's Football U-22",
+                "description"=>"CAM vs THA && INA vs PH",
                 "number_of_tickets"=>20000,
                 "sport_id"=>1,
                 "location_id"=>1,
                 "team_id"=>1,
                 "schedule_id"=>1,
+            ],
+            [
+                "event_name"=>"Men's Volleybal",
+                "description"=>"INA vs CAM",
+                "number_of_tickets"=>200,
+                "sport_id"=>2,
+                "location_id"=>3,
+                "team_id"=>1,
+                "schedule_id"=>2,
             ]
         ];
         foreach($events as $event){

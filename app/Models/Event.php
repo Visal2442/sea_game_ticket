@@ -12,6 +12,10 @@ class Event extends Model
     protected $fillable=[
         "event_name",
         "description",
-        "number_of_tickets"
+        "number_of_tickets",
+        "sport_id",
+        "location_id",
+        "team_id",
+        "schedule_id",
     ];
 }

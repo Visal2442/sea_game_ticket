@@ -23,10 +23,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // To run factory ==============
         // Location::factory(10)->create();
         // Schedule::factory(10)->create();
         // Sport::factory(10)->create();
         // Team::factory(10)->create();
         // Event::factory(10)->create();
+
+        // To run seeder ===============
+        $this->call(LocationSeeder::class);
+        $this->call(ScheduleSeeder::class);
+        $this->call(SportSeeder::class);
+        $this->call(TeamSeeder::class);
+        $this->call(EventSeeder::class);
     }
 }
