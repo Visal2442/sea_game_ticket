@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Location;
 use App\Models\Schedule;
 use App\Models\Sport;
+use App\Models\Team;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         Location::factory(10)->create();
         Schedule::factory(10)->create();
         Sport::factory(10)->create();
+        Team::factory(10)->create();
     }
 }

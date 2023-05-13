@@ -12,7 +12,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::all();
+        return response()->json(["success"=> true, "data"=>$teams], 200);
     }
 
     /**
@@ -20,7 +21,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

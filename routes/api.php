@@ -3,6 +3,7 @@
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SportController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::resource("schedules", ScheduleController::class);
 
 // SPORT ========================== 
 Route::resource("sports", SportController::class);
+
+// TEAM ========================== 
+Route::resource("teams", TeamController::class);
