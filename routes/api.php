@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SportController;
@@ -33,3 +34,6 @@ Route::resource("sports", SportController::class);
 
 // TEAM ========================== 
 Route::resource("teams", TeamController::class);
+
+// TEAM ========================== 
+Route::resource("events", EventController::class);

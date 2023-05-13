@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\Schedule;
 use App\Models\Sport;
 use App\Models\Team;
+use App\Models\Event;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,9 +23,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Location::factory(10)->create();
-        Schedule::factory(10)->create();
-        Sport::factory(10)->create();
-        Team::factory(10)->create();
+        // Location::factory(10)->create();
+        // Schedule::factory(10)->create();
+        // Sport::factory(10)->create();
+        // Team::factory(10)->create();
+        // Event::factory(10)->create();
     }
 }
