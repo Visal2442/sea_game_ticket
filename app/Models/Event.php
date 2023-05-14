@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Event extends Model
 {
@@ -13,9 +17,35 @@ class Event extends Model
         "event_name",
         "description",
         "number_of_tickets",
+        "teams",
         "sport_id",
         "location_id",
-        "team_id",
+        // "team_id",
         "schedule_id",
     ];
+
+    protected function teams():Attribute{
+        return Attribute::make(
+            get: fn ($value)=>json_decode($value, true),
+            set: fn ($value)=>json_encode($value),
+        );
+    }
+
+    public function sport():HasOne{
+        return $this->hasOne(Sport::class);
+    }
+
+    public function schedule():BelongsTo{
+        return $this->belongsTo(Schedule::class);
+    }
+
+    public function location():BelongsTo{
+        return $this->belongsTo(Location::class);
+    }
+
+    public function booking():HasMany{
+        return $this->hasMany(Booking::class);
+    }
+
+
 }

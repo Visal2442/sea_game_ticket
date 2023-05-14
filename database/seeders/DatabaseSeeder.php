@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SportSeeder::class);
         $this->call(TeamSeeder::class);
         $this->call(EventSeeder::class);
+        $this->call(BookingSeeder::class);
     }
 }

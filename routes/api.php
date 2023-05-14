@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
@@ -35,5 +36,11 @@ Route::resource("sports", SportController::class);
 // TEAM ========================== 
 Route::resource("teams", TeamController::class);
 
-// TEAM ========================== 
+// EVENT ========================== 
 Route::resource("events", EventController::class);
+Route::get("events/searchEvent/{event_name}", [EventController::class, "searchEvent"]);
+// Route::post("events/bookTicket/{event_id}", [EventController::class, "bookTicket"]);
+
+// BOOKING ========================== 
+Route::resource("bookings", BookingController::class);
+Route::post("bookings/bookTicket/{event_id}/{zone}", [BookingController::class, "bookTicket"]);

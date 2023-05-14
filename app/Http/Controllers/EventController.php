@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Booking;
 
 function getValidation(){
     return [
         "event_name"=>"required|max:100",
         "description"=>"required|max:255",
         "number_of_tickets"=>"required",
+        "teams"=>"required",
         "sport_id"=>"required",
         "location_id"=>"required",
-        "team_id"=>"required",
         "schedule_id"=>"required",
     ];
 }
@@ -42,6 +43,15 @@ class EventController extends Controller
         }
         Event::create($validator->validated());
         return response()->json(["success"=>true, "message"=>"Create successfully"],200);
+    }
+
+     /**
+     * Display event detail.
+     */
+    public function searchEvent(string $event_name)
+    {
+        $event = Event::where("event_name", "like", "%".$event_name."%")->get();
+        return response()->json(["success"=>true, "data"=>$event], 200);
     }
     
     /**

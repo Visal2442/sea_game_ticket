@@ -17,19 +17,29 @@ class EventSeeder extends Seeder
             [
                 "event_name"=>"Men's Football U-22",
                 "description"=>"CAM vs THA && INA vs PH",
-                "number_of_tickets"=>20000,
+                "teams"=>[
+                    "team1"=>"Cambodia",
+                    "team2"=>"Indonesia",
+                    "team3"=>"Thailand",
+                    "team4"=>"Myanmar"
+                ],
+                "number_of_tickets"=>1,
                 "sport_id"=>1,
                 "location_id"=>1,
-                "team_id"=>1,
                 "schedule_id"=>1,
             ],
             [
-                "event_name"=>"Men's Volleybal",
+                "event_name"=>"Men's Volleyball",
                 "description"=>"INA vs CAM",
                 "number_of_tickets"=>200,
+                "teams"=>[
+                    "team1"=>"Cambodia",
+                    "team2"=>"Indonesia",
+                    "team3"=>"Thailand",
+                    "team4"=>"Philippine"
+                ],
                 "sport_id"=>2,
                 "location_id"=>3,
-                "team_id"=>1,
                 "schedule_id"=>2,
             ]
         ];
