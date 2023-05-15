@@ -13,10 +13,14 @@ class Booking extends Model
 
     protected $fillable=[
         "zone",
-        "event_id"
+        "event_id",
+        "user_id"
     ];
 
     public function event():BelongsTo{
         return $this->belongsTo(Event::class);
+    }
+    public function user():BelongsTo{
+        return $this->belongsTo(User::class);
     }
 }

@@ -6,13 +6,13 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Booking;
+use App\Models\Team;
 
 function getValidation(){
     return [
         "event_name"=>"required|max:100",
         "description"=>"required|max:255",
         "number_of_tickets"=>"required",
-        "teams"=>"required",
         "sport_id"=>"required",
         "location_id"=>"required",
         "schedule_id"=>"required",
@@ -21,6 +21,7 @@ function getValidation(){
 
 class EventController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -41,8 +42,9 @@ class EventController extends Controller
         if($validator->fails()){
             return response()->json(["success"=>false, "message"=>$validator->errors()], 200);
         }
-        Event::create($validator->validated());
-        return response()->json(["success"=>true, "message"=>"Create successfully"],200);
+        $event = Event::create($validator->validated());
+        $event->teams()->sync($request["teams_id"]);
+        return response()->json(["success"=>true, "message"=>"Event is created"],200);
     }
 
      /**
@@ -59,7 +61,7 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::find($id);
+        $event = Event::with("teams")->find($id);
         return response()->json(["success"=>true, "data"=>$event], 200);
     }
     
@@ -80,10 +82,9 @@ class EventController extends Controller
             "number_of_tickets"=>$request->number_of_tickets,
             "sport_id"=>$request->sport_id,
             "location_id"=>$request->location_id,
-            "team_id"=>$request->team_id,
             "schedule_id"=>$request->schedule_id,
         ]);
-        return response()->json(["success"=>true, "message"=>"Update successfully"], 200);
+        return response()->json(["success"=>true, "message"=>"Event is updated."], 200);
     }
 
     /**
@@ -92,6 +93,6 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         Event::destroy($id);
-        return response()->json(["success"=>true, "message"=>"Delete successfully"], 200);
+        return response()->json(["success"=>true, "message"=>"Event is deleted."], 200);
     }
 }

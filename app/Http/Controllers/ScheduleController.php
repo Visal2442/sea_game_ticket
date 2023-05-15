@@ -35,14 +35,6 @@ class ScheduleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Schedule $schedule)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Schedule $schedule)

@@ -15,33 +15,31 @@ class TeamSeeder extends Seeder
     {
         $teams =[
             [
-                "name"=>"Cambodia"
+                "country"=>"Cambodia"
             ],
             [
-                "name"=>"Thailand"
+                "country"=>"Thailand"
             ],
             [
-                "name"=>"Vietname"
+                "country"=>"Vietnam"
             ],
             [
-                "name"=>"Indonesia"
+                "country"=>"Indonesia"
             ],
             [
-                "name"=>"Lao"
+                "country"=>"Lao"
             ],
             [
-                "name"=>"Myanmar"
+                "country"=>"Malaysia"
             ],
             [
-                "name"=>"Timor"
+                "country"=>"Myanmar"
             ],
             [
-                "name"=>"Singapore"
-            ],
-            [
-                "name"=>"Bruine"
+                "country"=>"Singapore"
             ],
         ];
+
         foreach($teams as $team){
             Team::create($team);
         }

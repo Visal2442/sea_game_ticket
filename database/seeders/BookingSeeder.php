@@ -16,23 +16,28 @@ class BookingSeeder extends Seeder
         $bookings=[
             [
                 "zone"=>"A",
-                "event_id"=>1
+                "event_id"=>1,
+                "user_id"=>1
             ],
             [
                 "zone"=>"A",
-                "event_id"=>1
+                "event_id"=>1,
+                "user_id"=>2
             ],
             [
                 "zone"=>"A",
-                "event_id"=>1
+                "event_id"=>1,
+                "user_id"=>3
             ],
             [
                 "zone"=>"A",
-                "event_id"=>1
+                "event_id"=>1,
+                "user_id"=>4
             ],
             [
                 "zone"=>"A",
-                "event_id"=>2
+                "event_id"=>2,
+                "user_id"=>5
             ],
         ];
 

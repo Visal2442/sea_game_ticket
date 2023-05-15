@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("event_name");
             $table->string("description");
-            $table->json("teams");
             $table->integer("number_of_tickets");
             $table->foreignId("sport_id")->constrained(table:"sports")->onDelete("cascade")->onUpdate("cascade");
             $table->foreignId("location_id")->constrained(table:"locations")->onDelete("cascade")->onUpdate("cascade");

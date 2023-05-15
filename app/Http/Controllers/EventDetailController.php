@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
+use App\Models\EventDetail;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class EventDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team $team)
+    public function show(EventDetail $eventDetail)
     {
         //
     }
@@ -34,7 +34,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, EventDetail $eventDetail)
     {
         //
     }
@@ -42,7 +42,7 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy(EventDetail $eventDetail)
     {
         //
     }

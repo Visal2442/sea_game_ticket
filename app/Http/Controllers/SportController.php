@@ -15,7 +15,7 @@ class SportController extends Controller
         $sports = Sport::all();
         return response()->json(["success"=>true, "data"=>$sports],200);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -23,28 +23,14 @@ class SportController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Sport $sport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Sport $sport)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sport $sport)
+    public function destroy(string $id)
     {
-        //
+        Sport::destroy($id);
+        return response()->json(["success"=>true, "message"=>"Delete successfully"],200);
+
     }
 }

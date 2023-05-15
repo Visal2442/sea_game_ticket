@@ -9,6 +9,7 @@ use App\Models\Schedule;
 use App\Models\Sport;
 use App\Models\Team;
 use App\Models\Event;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,13 +31,15 @@ class DatabaseSeeder extends Seeder
         // Sport::factory(10)->create();
         // Team::factory(10)->create();
         // Event::factory(10)->create();
+        User::factory(10)->create();
 
         // To run seeder ===============
         $this->call(LocationSeeder::class);
         $this->call(ScheduleSeeder::class);
         $this->call(SportSeeder::class);
-        $this->call(TeamSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(BookingSeeder::class);
+        $this->call(TeamSeeder::class);
+        $this->call(EventDetailSeeder::class);
     }
 }

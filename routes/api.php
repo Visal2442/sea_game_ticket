@@ -6,6 +6,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +40,10 @@ Route::resource("teams", TeamController::class);
 // EVENT ========================== 
 Route::resource("events", EventController::class);
 Route::get("events/searchEvent/{event_name}", [EventController::class, "searchEvent"]);
-// Route::post("events/bookTicket/{event_id}", [EventController::class, "bookTicket"]);
+
+// USER ========================== 
+Route::resource("users", UserController::class);
 
 // BOOKING ========================== 
 Route::resource("bookings", BookingController::class);
-Route::post("bookings/bookTicket/{event_id}/{zone}", [BookingController::class, "bookTicket"]);
+Route::post("bookings/bookTicket", [BookingController::class, "bookTicket"]);

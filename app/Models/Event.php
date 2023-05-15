@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Team;
 
 class Event extends Model
 {
@@ -17,18 +19,21 @@ class Event extends Model
         "event_name",
         "description",
         "number_of_tickets",
-        "teams",
         "sport_id",
         "location_id",
-        // "team_id",
         "schedule_id",
     ];
 
-    protected function teams():Attribute{
-        return Attribute::make(
-            get: fn ($value)=>json_decode($value, true),
-            set: fn ($value)=>json_encode($value),
-        );
+    // Use this to add data to database as JSON format 
+    // protected function teams():Attribute{
+    //     return Attribute::make(
+    //         get: fn ($value)=>json_decode($value, true),
+    //         set: fn ($value)=>json_encode($value),
+    //     );
+    // }
+
+    public function teams():BelongsToMany{
+        return $this->belongsToMany(Team::class, "event_details");
     }
 
     public function sport():HasOne{
@@ -46,6 +51,4 @@ class Event extends Model
     public function booking():HasMany{
         return $this->hasMany(Booking::class);
     }
-
-
 }

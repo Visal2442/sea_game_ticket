@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 class BookingController extends Controller
 {
@@ -22,22 +23,34 @@ class BookingController extends Controller
      */
     public function bookTicket(Request $request)
     {
-        $event = Event::find($request->event_id);
+        $event = Event::find($request["event_id"]);
+        $bookings = User::find($request["user_id"])->bookings;
+
+        // Check amount of tickets 
         if($event["number_of_tickets"] <= 0){
             return response()->json(["success"=>false, "message"=>"Tickets are sold out!"], 200);
         }
+        // Check whether user has booked the ticket already
+        foreach($bookings as $booking){
+            if($booking["event_id"]==$request["event_id"]){
+                return response()->json(["success"=>false, "message"=>"You have booked the ticket already."], 200);
+            }
+        };
+
         // Add booking 
         Booking::create([
             "zone"=>$request->zone,
-            "event_id"=>$request->event_id
+            "event_id"=>$request->event_id,
+            "user_id"=>$request->user_id
         ]);
         // Update number of tickets in event 
         $event->update([
             "number_of_tickets"=>$event["number_of_tickets"]-1,
         ]);
+
         return response()->json(["success"=>true, "message"=>"Booking is successful"],200);
     }
-
+   
     /**
      * Store a newly created resource in storage.
      */
