@@ -17,11 +17,11 @@ class BookingController extends Controller
         $bookings = Booking::all();
         return response()->json(["success"=>true, "data"=>$bookings],200);
     }  
-    
+   
     /**
      * Store a newly created resource in storage.
      */
-    public function bookTicket(Request $request)
+    public function store(Request $request)
     {
         $event = Event::find($request["event_id"]);
         $bookings = User::find($request["user_id"])->bookings;
@@ -49,14 +49,6 @@ class BookingController extends Controller
         ]);
 
         return response()->json(["success"=>true, "message"=>"Booking is successful"],200);
-    }
-   
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

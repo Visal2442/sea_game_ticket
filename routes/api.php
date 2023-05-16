@@ -46,4 +46,3 @@ Route::resource("users", UserController::class);
 
 // BOOKING ========================== 
 Route::resource("bookings", BookingController::class);
-Route::post("bookings/bookTicket", [BookingController::class, "bookTicket"]);
