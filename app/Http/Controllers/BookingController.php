@@ -38,11 +38,8 @@ class BookingController extends Controller
         };
 
         // Add booking 
-        Booking::create([
-            "zone"=>$request->zone,
-            "event_id"=>$request->event_id,
-            "user_id"=>$request->user_id
-        ]);
+        Booking::create($request->all());
+        
         // Update number of tickets in event 
         $event->update([
             "number_of_tickets"=>$event["number_of_tickets"]-1,

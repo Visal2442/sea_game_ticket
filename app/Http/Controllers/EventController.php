@@ -16,6 +16,7 @@ function getValidation(){
         "sport_id"=>"required",
         "location_id"=>"required",
         "schedule_id"=>"required",
+        "teams_id"=>"required",
     ];
 }
 
@@ -76,14 +77,8 @@ class EventController extends Controller
         if($validator->fails()){
             return response()->json(["success"=>false, "message"=>$validator->errors()], 200);
         }
-        $event->update([
-            "event_name"=>$request->event_name,
-            "description"=>$request->description,
-            "number_of_tickets"=>$request->number_of_tickets,
-            "sport_id"=>$request->sport_id,
-            "location_id"=>$request->location_id,
-            "schedule_id"=>$request->schedule_id,
-        ]);
+        $event->update($validator->validated());
+        $event->teams()->sync($request["teams_id"]);
         return response()->json(["success"=>true, "message"=>"Event is updated."], 200);
     }
 

@@ -32,14 +32,14 @@ class LocationController extends Controller
         Location::create($validator->validated());
         return response()->json(["success"=>true, "message"=>"Create successfully"], 200);
     }
-
+    
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         $location = Location::find($id);
-        return $location;
+        return response()->json(["success"=>true, "data"=>$location], 200);
     }
 
     /**
@@ -55,9 +55,7 @@ class LocationController extends Controller
         if($validator->fails()){
             return response()->json(["success"=>false, "message"=> $validator->errors()],200);
         }
-        $location->update([
-            "name"=>$request->name
-        ]);
+        $location->update($validator->validated());
         return response()->json(["success"=>true, "message"=>"Update successfully"], 200);
     }
 
