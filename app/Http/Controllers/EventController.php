@@ -62,8 +62,11 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        $event = Event::with("teams")->find($id);
-        return response()->json(["success"=>true, "data"=>$event], 200);
+        if(Event::find($id)!=null){
+            $event = Event::with(["teams", "location", "schedule", "sport"])->find($id);
+            return response()->json(["success"=>true, "data"=>$event], 200);
+        }
+        return response()->json(["success"=>false, "message"=>"Event is not found"], 401);
     }
     
     /**
@@ -73,13 +76,16 @@ class EventController extends Controller
     {
         $validation = getValidation();
         $event = Event::find($id);
-        $validator=Validator::make($request->all(), $validation);
-        if($validator->fails()){
-            return response()->json(["success"=>false, "message"=>$validator->errors()], 200);
+        if($event!=null){
+            $validator=Validator::make($request->all(), $validation);
+            if($validator->fails()){
+                return response()->json(["success"=>false, "message"=>$validator->errors()], 200);
+            }
+            $event->update($validator->validated());
+            $event->teams()->sync($request["teams_id"]);
+            return response()->json(["success"=>true, "message"=>"Event is updated."], 200);
         }
-        $event->update($validator->validated());
-        $event->teams()->sync($request["teams_id"]);
-        return response()->json(["success"=>true, "message"=>"Event is updated."], 200);
+        return response()->json(["success"=>false, "message"=>"Event is not found"], 200);
     }
 
     /**
@@ -87,7 +93,10 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        Event::destroy($id);
-        return response()->json(["success"=>true, "message"=>"Event is deleted."], 200);
+        $message = "Event with id ".$id. " is not found";
+        if(Event::destroy($id)){
+            $message = "Event is deleted";
+        };
+        return response()->json(["success"=>true, "message"=>$message], 200);
     }
 }

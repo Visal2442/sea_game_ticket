@@ -36,8 +36,8 @@ class Event extends Model
         return $this->belongsToMany(Team::class, "event_details");
     }
 
-    public function sport():HasOne{
-        return $this->hasOne(Sport::class);
+    public function sport():BelongsTo{
+        return $this->belongsTo(Sport::class);
     }
 
     public function schedule():BelongsTo{
