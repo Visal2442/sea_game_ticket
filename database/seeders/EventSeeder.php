@@ -16,7 +16,7 @@ class EventSeeder extends Seeder
         $events =[
             [
                 "event_name"=>"Men's Football U-22",
-                "description"=>"CAM vs THA && INA vs PH",
+                "description"=>"Final",
                 "number_of_tickets"=>10000,
                 "sport_id"=>1,
                 "location_id"=>1,
@@ -24,7 +24,7 @@ class EventSeeder extends Seeder
             ],
             [
                 "event_name"=>"Men's Volleyball",
-                "description"=>"INA vs CAM",
+                "description"=>"4 groups left",
                 "number_of_tickets"=>200,
                 "sport_id"=>2,
                 "location_id"=>3,
